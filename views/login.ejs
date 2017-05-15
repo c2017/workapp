@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title></title>
+    <link href="/css/mui.min.css" rel="stylesheet"/>
+
+    <style type="text/css">
+        .mui-content{margin-top: 12px;}
+        .mui-btn{width: 80px;}
+    </style>
+    <style>
+        .canvasbox{
+            width: 300px;
+            height: 100px;
+            position: relative;
+        }
+        canvas{
+            background: #ccc;
+        }
+        #canvas2{
+            position: absolute;
+            left: 0;
+            top: 25px;
+        }
+        .zhezhao{
+            position: absolute;
+            left: 0;
+            top: 0;
+            cursor: pointer;
+            width: 100%;
+            height: 100%;
+            z-index: 10;
+        }
+    </style>
+</head>
+<body>
+<header class="mui-bar mui-bar-nav">
+    <h1 class="mui-title">用户登录</h1>
+</header>
+<div class="mui-content">
+    <form class="mui-input-group" action="/login/checkLogin" >
+        <div class="mui-input-row">
+            <label>帐号</label>
+            <input type="text" class="mui-input-clear" placeholder="请输入帐号名" name="uname" id="username">
+        </div>
+        <div class="mui-input-row">
+            <label>密码</label>
+            <input type="text" class="mui-input-clear" placeholder="请输入密码" name="upass" id="password">
+        </div>
+
+        <input type="hidden" value="" name="posx" id="posx">
+        <div class="mui-content-padded" align="center">
+            <button type="submit" class="mui-btn mui-btn-blue" id="login">登陆</button>
+        </div>
+    </form>
+
+    <img src="/imgs/ewm1.jpg" class="img" hidden alt=""/>
+    <img src="/imgs/ewm.png" class="img2" hidden alt="" />
+    <div class="canvasbox">
+        <canvas id="canvas" width='300' height="100" posx="<%=posx%>"></canvas>
+        <div class="zhezhao"></div>
+        <canvas id="canvas2"></canvas>
+    </div>
+</div>
+
+<script>
+    window.onload=function(){
+        var canvas=document.querySelector("#canvas");
+        var cobj=canvas.getContext("2d");
+        var img=document.querySelector(".img");
+        var img2=document.querySelector(".img2");
+        var suiji=canvas.getAttribute("posx");
+        var w=50;
+        var h=50;
+        //截取图片
+        cobj.drawImage(img,0,0,900,463,0,0,300,100);
+        cobj.globalCompositeOperation="destination-in";
+        cobj.drawImage(img2,0,0,280,280,suiji,25,w,h);
+        var imgx=cobj.getImageData(suiji,25,w,h);
+
+        //重新生成
+        cobj.globalCompositeOperation="source-over";
+        cobj.drawImage(img,0,0,900,463,0,0,300,100);
+        cobj.fillStyle="#fff";
+        cobj.fillRect(suiji,25,w,h);
+//		cobj.drawImage(img2,0,0,280,280,suiji,25,w,h);
+        //第二张画布
+        var canvas2=document.querySelector("#canvas2");
+        var zhezhao=document.querySelector(".zhezhao");
+        var cobj2=canvas2.getContext("2d");
+        canvas2.width=w;
+        canvas2.height=h;
+        cobj2.putImageData(imgx,0,0);
+
+        //遮罩在最上面，操作遮罩，避免默认事件
+            // pc端
+            zhezhao.onmousedown=function(e){
+            e.stopPropagation();
+            e.cancelBubble=false;
+            var cx=e.clientX;
+
+                zhezhao.onmousemove=function(e){
+                var ox=e.offsetX;
+                if(ox>275){ox=275}
+                if(ox<25){ox=25}
+                canvas2.style.left=(ox-w/2)+"px";
+            }
+
+                zhezhao.onmouseup=function(){
+                //在那个范围之内就成功
+                if(parseInt(getComputedStyle(canvas2).left)>=(suiji-3)&&parseInt(getComputedStyle(canvas2).left)<=(suiji+3)){
+                    alert("验证通过");
+                    var posx=document.querySelector("#posx");
+                    posx.value="ok";
+                    zhezhao.onmousedown=null;
+                }
+                zhezhao.onmousemove=null;
+                zhezhao.onmouseup=null;
+
+            }
+        }
+            // 移动端
+                // 按下的时候阻止浏览器默认事件
+
+        zhezhao.addEventListener("touchstart",function(e){
+            console.log(e);
+            e.preventDefault();
+            e.cancelBubble=false;
+        })
+        zhezhao.addEventListener("touchmove",function(e){
+            var ox=e.targetTouches[0].pageX;
+            if(ox>275){ox=275}
+            if(ox<25){ox=25}
+            canvas2.style.left=(ox-w/2)+"px";
+        })
+        zhezhao.addEventListener("touchend",function(e){
+            if(parseInt(getComputedStyle(canvas2).left)>=(suiji-3)&&parseInt(getComputedStyle(canvas2).left)<=(suiji+3)){
+                alert("验证通过");
+                var posx=document.querySelector("#posx");
+                posx.value="ok";
+                zhezhao.onmousedown=null;
+            }
+        })
+    }
+</script>
+</body>
+</html>

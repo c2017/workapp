@@ -1,0 +1,87 @@
+<style>
+    .mui-table-view-cell{
+        position: relative;
+    }
+    .mui-navigate-right{
+        position: relative;
+        z-index:1;
+        background:#fff;
+        border-bottom: 1px solid #ccc;
+    }
+    .mui-icon-trash{
+        position: absolute;
+        right:10px;top:10px;bottom:3px;
+        margin:auto;
+    }
+
+    .view-animate {
+        transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) .5s;
+        position: absolute;
+        width:100%;
+
+    }
+
+    .view-animate.ng-enter, .view-animate.ng-leave {
+        display:block;
+        left:0px;
+    }
+
+    .view-animate.ng-enter {
+        left:100%;
+    }
+    .view-animate.ng-enter.ng-enter-active {
+        left:0px;
+
+    }
+    .view-animate.ng-leave.ng-leave-active {
+        left:-100%;
+    }
+
+    .readnav{
+        height:30px;
+        line-height:30px;
+        width:100%;
+        display:flex;
+    }
+    .readnav li{
+        height:30px;
+        text-align:center;
+        line-height:30px;
+        cursor:pointer;
+        width:33.3%;
+    }
+    .readnav li:active{
+        background:rgba(150,150,150,5);
+        color:#555;
+    }
+
+</style>
+
+<header class="mui-bar mui-bar-nav">
+    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left" href="javascript:;" onclick="history.back()"></a>
+    <h1 class="mui-title">接收消息列表</h1>
+    <!--<a class=" mui-icon mui-icon-compose mui-pull-right" href="#!/todocon"></a>-->
+</header>
+<div class="mui-content">
+    <ul class="readnav">
+        <li ng-click="showread()">已读</li>
+        <li ng-click="showall()">查看全部</li>
+        <li ng-click="showunread()">未读</li>
+    </ul>
+    <ul class="mui-table-view">
+        <!--未读列表-->
+        <li class="mui-table-view-cell" ng-repeat="item in unread">
+            <a href="#!/showmsg/{{item.mid}}" class="mui-navigate-right">
+                <span class="glyphicon glyphicon-envelope" style="margin-right:3px;color:#ffd45f;"></span>[发信人：{{item.uname}}] {{item.title}}
+            </a>
+            <span class="mui-icon mui-icon-trash" ng-click="del(item.mrid,'unread')"></span>
+        </li>
+        <!--已读列表-->
+        <li class="mui-table-view-cell" ng-repeat="item in read">
+            <a href="#!/showmsg/{{item.mid}}" class="mui-navigate-right">
+                <span class="glyphicon glyphicon-envelope" style="margin-right:3px;color:rgba(37,29,14,0.27);"></span>[发信人：{{item.uname}}] {{item.title}}
+            </a>
+            <span class="mui-icon mui-icon-trash" ng-click="del(item.mrid,'read')"></span>
+        </li>
+    </ul>
+</div>

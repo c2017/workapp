@@ -1,0 +1,63 @@
+<style>
+    .view-animate {
+        transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) .5s;
+        position: absolute;
+        width:100%;
+
+    }
+    .view-animate.ng-enter, .view-animate.ng-leave {
+        display:block;
+        left:0px;
+    }
+
+    .view-animate.ng-enter {
+        left:100%;
+    }
+    .view-animate.ng-enter.ng-enter-active {
+        left:0px;
+
+    }
+    .view-animate.ng-leave.ng-leave-active {
+        left:-100%;
+    }
+    a>a{
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        left: 15px;
+        z-index:10;
+    }
+</style>
+
+<header class="mui-bar mui-bar-nav">
+    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left" href="javascript:;" onclick="history.back()"></a>
+    <h1 class="mui-title">设置中心</h1>
+</header>
+<style>
+    .mui-content{
+        width:100%;
+        overflow:hidden;
+        padding:10px 5px;
+        box-sizing: border-box;
+    }
+    .mui-content div{
+        height:40px;
+        width:100%;
+        margin-bottom:5px;
+        line-height:40px;
+        border-radius: 4px;
+        padding-left:10px;
+        box-sizing: border-box;
+        box-shadow:2px 2px 1px rgba(150,150,150,0.16);
+    }
+    .mui-content div a{
+        display:block;
+    }
+</style>
+<div class="mui-content">
+
+    <div><a href="#!/userInfo">查看个人信息</a></div>
+
+    <div><a href="/unlogin">退出登录</a></div>
+
+</div>

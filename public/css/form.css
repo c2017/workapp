@@ -1,0 +1,13 @@
+h4{
+    text-align:center;
+    color:#555;
+    margin:10px 0;
+}
+.content{
+    background:rgba(255,255,255,0.8);
+    overflow:hidden;
+    padding:40px 20px;
+    width:500px;
+    margin:0 auto;
+    border-radius: 10px;
+}

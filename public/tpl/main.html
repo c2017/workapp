@@ -1,0 +1,62 @@
+<style>
+    .view-animate {
+        transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) .5s;
+        position: absolute;
+        width:100%;
+
+    }
+
+    .view-animate.ng-enter, .view-animate.ng-leave {
+        display:block;
+        left:0px;
+    }
+
+    .view-animate.ng-enter {
+        left:100%;
+    }
+    .view-animate.ng-enter.ng-enter-active {
+        left:0px;
+
+    }
+    .view-animate.ng-leave.ng-leave-active {
+        left:-100%;
+    }
+</style>
+<link rel="stylesheet" href="/css/main.css">
+<header class="mui-bar mui-bar-nav">
+    <h1 class="mui-title">workApp</h1>
+</header>
+<div class="mui-content"  ng-controller="main">
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide" style="background-image:url({{data[0].img}})">
+                <a href="#!/list?{{data[0].url}}">{{data[0].title}}</a>
+            </div>
+            <div class="swiper-slide" style="background-image:url({{data[1].img}})">
+                <a href="#!/list?{{data[0].url}}">{{data[1].title}}</a>
+            </div>
+            <div class="swiper-slide" style="background-image:url({{data[2].img}})">
+                <a href="#!/list?{{data[0].url}}">{{data[2].title}}</a>
+            </div>
+        </div>
+
+        <div class="swiper-pagination"></div>
+        <div class="swiper-scrollbar"></div>
+    </div>
+
+    <ul class="mui-table-view">
+       <li class="mui-table-view-cell mui-media" id="one" ng-repeat="item in data">
+            <a href="#!/list?{{item.url}}">
+                <img class="mui-media-object mui-pull-right" src="{{item.img}}">
+                <div class="mui-media-body">
+                   {{item.title}}
+                    <p class="mui-ellipsis">
+                        {{item.info}}
+                    </p>
+                </div>
+            </a>
+        </li>
+    </ul>
+</div>
+
+

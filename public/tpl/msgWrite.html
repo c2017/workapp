@@ -1,0 +1,35 @@
+
+<header class="mui-bar mui-bar-nav">
+    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left" href="javascript:;"  onclick="history.back()"></a>
+    <h1 class="mui-title">写消息</h1>
+
+</header>
+<div class="mui-content">
+    <div class="con" style="padding:5px">
+        <form class="mui-input-group">
+
+            <div class="mui-input-row">
+                <label>选择</label>
+                <select name="jieshouid" id="" ng-model="msg.jieshouid">
+                    <option value="">选择对象</option>
+                    <option value="{{item.uid}}" ng-repeat="item in user">{{item.uname}}</option>
+                </select>
+            </div>
+
+
+            <div class="mui-input-row">
+                <label>标题</label>
+                <input type="text" class="mui-input-clear" placeholder="输入标题" name="title" ng-model="msg.title">
+            </div>
+            <div class="mui-input-row">
+                <label>内容</label>
+            </div>
+            <div style="padding-left:15px">
+                <textarea name="con" cols="30" rows="10" style="border:1px solid #ccc;border-top:none" ng-model="msg.con"></textarea>
+            </div>
+            <div class="mui-button-row">
+                <button type="button" class="mui-btn mui-btn-primary" ng-click="send()">发送</button>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <link rel="stylesheet" href="/css/form.css">
+    <style>
+        .content{
+            width:800px;
+        }
+        .box{
+            width:100%;
+            height:100%;
+            overflow:auto;
+        }
+        .table{
+            width:100%;
+            background:rgba(255,255,255,0.8);
+        }
+    </style>
+</head>
+<body>
+
+
+<div class="box" ng-controller="showUser">
+
+    <h4>管理用户</h4>
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <td>用户id</td>
+            <td>用户名</td>
+            <td>号码</td>
+            <td>权限</td>
+            <td>操作</td>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="item in data">
+            <td>{{item.uid}}</td>
+            <td>{{item.uname}}</td>
+            <td>{{item.tel}}</td>
+            <td ng-if="item.uroot==0">后台管理员</td>
+            <td ng-if="item.uroot==1">普通员工</td>
+            <td ng-if="item.uroot==3">组长</td>
+            <td>
+                <a class="btn btn-default" href="#!/admin/editUser/{{item.uid}}" role="button">编辑</a>
+                <input class="btn btn-default" type="button" ng-click="del(item.uid)" value="删除">
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+
+</div>
+</body>
+</html>
+

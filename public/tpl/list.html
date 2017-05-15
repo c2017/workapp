@@ -1,0 +1,71 @@
+<style>
+    .swiper-container {
+        width: 100vw;
+        height: 150px;
+    }
+    .swiper-slide {
+        text-align: center;
+        font-size: 18px;
+        background: #fff;
+
+        /* Center slide text vertically */
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        -webkit-justify-content: center;
+        justify-content: center;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        -webkit-align-items: center;
+        align-items: center;
+    }
+    .welcome{
+        display: block;
+        width:200px;height:30px;
+        text-align: center;
+        line-height: 30px;
+        position: fixed;
+        left:0;right:0;
+        margin:auto;bottom: 50px;
+        text-decoration: none;
+        border:1px solid #ccc;
+        border-radius: 5px;
+        color:#000;
+        background: linear-gradient(#fff,#ccc);
+    }
+    .view-animate {
+        transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) .5s;
+        position: absolute;
+        width:100%;
+
+    }
+
+    .view-animate.ng-enter, .view-animate.ng-leave {
+        display:block;
+        left:0px;
+    }
+
+    .view-animate.ng-enter {
+        left:100%;
+    }
+    .view-animate.ng-enter.ng-enter-active {
+        left:0px;
+
+    }
+    .view-animate.ng-leave.ng-leave-active {
+        left:-100%;
+    }
+</style>
+<header class="mui-bar mui-bar-nav" style="z-index: 999" onclick="history.back()">
+    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left" onclick="history.back()"></a>
+    <h1 class="mui-title">workApp</h1>
+</header >
+<div class="con">
+
+</div>
+
+
+

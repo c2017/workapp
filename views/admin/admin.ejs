@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>workApp 后台</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/default.css">
+    <link rel="stylesheet" href="/css/admin_main.css">
+
+    <link rel="stylesheet" href="/css/admin-view-animate.css">
+
+    <script src="/js/angular.min.js"></script>
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/touch.js"></script>
+    <script src="/js/swiper.jquery.js"></script>
+    <script src="/js/angular-route.min.js"></script>
+    <script src="/js/angular-animate.min.js"></script>
+
+    <script src="/js/admin_route.js"></script>
+    <script src="/js/admin_controller.js"></script>
+    <script src="/js/admin_service.js"></script>
+    <script src="/js/admin_app.js"></script>
+    <style>
+        #notice
+        {
+            position:fixed;
+            height:100%;
+            width:100%;
+            background:rgba(0,0,0,0.7);
+            z-index:10000;
+        }
+        #notice .message{
+            height:60px;
+            width:100%;
+            text-align:center;
+            link-height:60px;
+            position:absolute;
+            left:0;
+            top:40%;
+            color:#fff;
+            font-size:20px;
+        }
+    </style>
+
+    <style>
+        body{
+            background-color:transparent;
+        }
+    </style>
+</head>
+<body ng-app="admin">
+<header >
+    欢迎 <%=user%> 来到后台管理中心
+</header>
+<div id="notice" ng-show="notice.show" ng-click="hiddenFun()" ng-controller="notice">
+    <div class="message">
+        {{notice.message.text}}
+    </div>
+</div>
+<!--nav start-->
+<div class="nav">
+    <ul>
+        <li>
+            <a href="/">查看首页</a>
+        </li>
+        <li>
+            <span>用户管理</span>
+            <ul class="erji">
+                <li>
+                    <a href="#!/admin/addUser" >添加用户</a>
+                </li>
+                <li>
+                    <a href="#!/admin/showUser">管理用户</a>
+                </li>
+            </ul>
+        </li>
+
+        <li>
+            <span>内容管理</span>
+            <ul class="erji">
+                <li>
+                    <a href="#!/admin/updateCon" >更新内容</a>
+                </li>
+                <li>
+                    <a href="#!/admin/showCon/0">查看内容</a>
+                </li>
+            </ul>
+        </li>
+
+
+        <!--<li>
+            <span>通讯录管理</span>
+            <ul class="erji">
+                <li>
+                    <a href="/phone/addPhone" target="show">添加通讯录</a>
+                </li>
+                <li>
+                    <a href="/phone/showPhone" target="show">查看通讯录
+                    </a>
+                </li>
+            </ul>
+        </li>-->
+    </ul>
+</div>
+<!--nav end-->
+<!--content start-->
+<div class="content view-animate" ng-view>
+
+</div>
+<!--content end-->
+</body>
+</html>

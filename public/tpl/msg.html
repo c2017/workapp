@@ -1,0 +1,52 @@
+<style>
+    .view-animate {
+        transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) .5s;
+        position: absolute;
+        width:100%;
+
+    }
+    .view-animate.ng-enter, .view-animate.ng-leave {
+        display:block;
+        left:0px;
+    }
+
+    .view-animate.ng-enter {
+        left:100%;
+    }
+    .view-animate.ng-enter.ng-enter-active {
+        left:0px;
+
+    }
+    .view-animate.ng-leave.ng-leave-active {
+        left:-100%;
+    }
+    a>a{
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        left: 15px;
+        z-index:10;
+    }
+</style>
+
+<header class="mui-bar mui-bar-nav">
+    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left" href="javascript:;" onclick="history.back()"></a>
+    <h1 class="mui-title">消息</h1>
+
+</header>
+
+<div class="mui-content">
+    <ul class="mui-table-view">
+        <li class="mui-table-view-cell">
+            <a class="mui-navigate-right" href="#!/msgSendList">发送的消息</a>
+        </li>
+        <li class="mui-table-view-cell">
+            <a class="mui-navigate-right" href="#!/msgReceive">接收的消息</a>
+        </li>
+        <li class="mui-table-view-cell">
+            <a class="mui-navigate-right" href="#!/msgWrite">写消息</a>
+        </li>
+    </ul>
+
+
+</div>

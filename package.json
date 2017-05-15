@@ -1,0 +1,24 @@
+{
+    "name": "bae-nodejs",
+    "version": "1.0.0",
+    "author": "bae",
+    "description": "The first bae nodejs app!",
+    "scripts": {
+        "start": "node index.js"
+    },
+    "dependencies": {
+    	"async": "^2.4.0",
+        "body-parser": "~1.15.2",
+        "cheerio": "^0.22.0",
+        "crypto": "0.0.3",
+        "debug": "~2.2.0",
+        "ejs": "^2.5.6",
+        "express": "~4.14.0",
+        "express-session": "^1.15.2",
+        "mysql": "^2.13.0",
+        "nodegrass": "0.0.3",
+        "request": "^2.81.0",
+        "serve-favicon": "~2.3.0"
+    }
+}
+

@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/mui.min.css">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/default.css">
+    <link rel="stylesheet" href="/css/index.css">
+    <link rel="stylesheet" href="/css/swiper.min.css">
+
+    <script>
+        if(!localStorage.welcome){
+            localStorage.welcome="yes";
+            location.href="/welcome"
+        }
+    </script>
+    <script src="/js/angular.min.js"></script>
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/touch.js"></script>
+    <script src="/js/swiper.jquery.js"></script>
+    <script src="/js/angular-route.min.js"></script>
+    <script src="/js/angular-animate.min.js"></script>
+    <script src="/js/controllers.js"></script>
+    <script src="/js/route.js"></script>
+    <script src="/js/services.js"></script>
+    <script src="/js/app.js"></script>
+
+    <style>
+
+        #notice
+        {
+            position:fixed;
+            height:100%;
+            width:100%;
+            background:rgba(0,0,0,0.7);
+            z-index:10000;
+        }
+
+        #notice .message{
+            height:60px;
+            width:100%;
+            text-align:center;
+            link-height:60px;
+            position:absolute;
+            left:0;
+            top:40%;
+            color:#fff;
+            font-size:20px;
+        }
+
+    </style>
+</head>
+<body ng-app="myapp" >
+
+<div id="notice" ng-show="notice.show" ng-click="hiddenFun()" ng-controller="notice">
+    <div class="message">
+        {{notice.message.text}}
+    </div>
+</div>
+
+<div ng-view class="view-animate">
+
+</div>
+
+
+
+<nav class="mui-bar mui-bar-tab">
+    <a class="mui-tab-item "  ng-class="{'mui-active':active=='one'}"   ng-click="change('one')" ng-href="#!/" >
+        <span class="mui-icon mui-icon-home"></span>
+        <span class="mui-tab-label" > 首页
+        </span>
+    </a>
+    <a class="mui-tab-item" ng-href="#!/msg" ng-class="{'mui-active':active=='two'}"   ng-click="change('two')">
+        <span class="mui-icon mui-icon-phone"></span>
+        <span class="mui-tab-label"> 通讯录</span>
+    </a>
+    <a class="mui-tab-item" ng-class="{'mui-active':active=='three'}"   ng-click="change('three')" href="#!/todo">
+        <span class="mui-icon mui-icon-list"></span>
+        <span class="mui-tab-label">便签</span>
+    </a>
+   <!-- <a class="mui-tab-item" ng-class="{'mui-active':active=='four'}"   ng-click="change('four')">
+        <span class="mui-icon mui-icon-gear"></span>
+        <span class="mui-tab-label">发送日志</span>
+    </a>-->
+    <a class="mui-tab-item" ng-class="{'mui-active':active=='five'}"   ng-click="change('five')" href="#!/config">
+        <span class="mui-icon mui-icon-gear"></span>
+        <span class="mui-tab-label">设置</span>
+    </a>
+</nav>
+
+</body>
+</html>

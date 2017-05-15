@@ -1,0 +1,9 @@
+body{
+    background: rgba(204, 243, 218, 0.1);
+    width:100%;
+    overflow-x:hidden;
+}
+
+.mui-content{
+    background:transparent;
+}

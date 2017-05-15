@@ -1,0 +1,57 @@
+<style>
+    .mui-table-view-cell{
+        position: relative;
+    }
+    .mui-navigate-right{
+        position: relative;
+        z-index:1;
+        background:#fff;
+        border-bottom: 1px solid #ccc;
+    }
+    .mui-icon-trash{
+        position: absolute;
+        right:10px;top:10px;bottom:3px;
+        margin:auto;
+    }
+
+    .view-animate {
+        transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) .5s;
+        position: absolute;
+        width:100%;
+
+    }
+
+    .view-animate.ng-enter, .view-animate.ng-leave {
+        display:block;
+        left:0px;
+    }
+
+    .view-animate.ng-enter {
+        left:100%;
+    }
+    .view-animate.ng-enter.ng-enter-active {
+        left:0px;
+
+    }
+    .view-animate.ng-leave.ng-leave-active {
+        left:-100%;
+    }
+
+</style>
+
+<header class="mui-bar mui-bar-nav">
+    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left" href="javascript:;" onclick="history.back()"></a>
+    <h1 class="mui-title">便签</h1>
+    <a class=" mui-icon mui-icon-compose mui-pull-right" href="#!/todocon"></a>
+</header>
+
+<div class="mui-content">
+<ul class="mui-table-view">
+    <li class="mui-table-view-cell" ng-repeat="item in data">
+        <a href="#!/todoinfo/{{item.id}}"class="mui-navigate-right">
+            {{item.todo}}
+        </a>
+        <span class="mui-icon mui-icon-trash" ng-click="delTodo(item.id)"></span>
+    </li>
+</ul>
+</div>
